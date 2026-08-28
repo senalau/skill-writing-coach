@@ -62,6 +62,19 @@ Ask these when the beginner is stuck:
 6. "AI 做这件事时最容易哪里跑偏？"
 7. "有没有一次你觉得它做对了？那次输入和输出大概是什么样？"
 
+When materials would help, invite the user to send anything relevant and take responsibility for filtering it:
+
+- "你可以把相关链接、截图、文档、好例子都发来，我会帮你判断哪些能用。"
+- "如果你不确定哪些资料有用，可以先全发，我看完再问你补最关键的缺口。"
+
+When one specific missing material would unlock the next step, ask for it concretely:
+
+- "发我一个你想模仿的链接。"
+- "给我一篇你觉得做得好的例子。"
+- "把你通常会给 AI 的文档或截图发来。"
+
+When public examples, current platform rules, or outside references would shape the skill, gather that information yourself before the brief and tell the user what changed.
+
 ## First-Turn Examples
 
 Use these to keep the opening concrete:
@@ -78,7 +91,11 @@ User says: "帮我做一个销售邮件 skill"
 
 Ask: "你现在写销售邮件时，会先看哪些材料，然后怎么判断一封邮件写得好？"
 
-In these cases, do not draft the main skill file yet. Keep interviewing until the Skill Brief has the user's real workflow, boundaries, and quality bar.
+User says: "信息都在上面了，直接写，不用问"
+
+Respond with a plain Skill Brief, then ask: "这个 brief 够我继续写了吗？如果够，我下一步直接写成 skill。"
+
+In these cases, do not draft the main skill file in the first response. Ask one concrete question when the workflow is unclear, or show a Skill Brief when there is enough to summarize. Let the user decide whether the brief is enough.
 
 ## Skill Brief Template
 
@@ -89,6 +106,7 @@ Use this before drafting the main skill file, usually `SKILL.md`, for any non-tr
 
 - 目标：
 - 起始材料：
+- AI 需要自己查的资料：
 - 你现在手动怎么做：
 - 希望 AI 自动做：
 - 必须先问你确认：
