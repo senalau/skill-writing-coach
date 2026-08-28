@@ -34,8 +34,12 @@ Use this checklist before finalizing a beginner-written AI agent skill.
 
 - The first question is about the user's problem or desired AI help, not skill mechanics.
 - The coach asks one concrete question at a time during discovery.
+- A bare request like "帮我做一个 skill" gets a discovery question, not a final skill draft.
 - When the user says "继续", the coach moves to the next missing piece instead of restarting.
 - The Skill Brief uses beginner-friendly labels and matches the user's real workflow.
+- A vague request like "make a skill for X" starts discovery; it does not justify drafting the final skill.
+- The coach has real answers for workflow, automation boundary, quality bar, and failure modes before drafting.
+- If two or more brief fields are missing, the coach keeps interviewing instead of filling them with guesses.
 
 ## Progressive Disclosure
 
@@ -68,3 +72,4 @@ The skill is ready when a new agent can answer these questions after reading it:
 4. What mistakes should I watch for?
 5. What extra files should I read only when needed?
 6. What should stay outside the generated skill files as notes?
+7. What should I ask before drafting if the user only gives a vague skill idea?
