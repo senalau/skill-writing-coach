@@ -6,6 +6,10 @@ These notes came from live-testing `skill-writing-coach` by creating and testing
 
 Start from the user's problem and current manual process. Do not ask beginners for skill concepts such as trigger, invocation, or workflow too early.
 
+A user asking "帮我做一个 skill" or "make a skill for X" is not a complete brief. Treat it as permission to start discovery, not permission to write the final skill. The coach should first uncover the real task, materials, manual process, automation boundary, quality bar, and likely failure modes.
+
+First-turn test: if the user says only "帮我做一个 skill" or "做一个能自动发公众号的 skill", the next response should ask what problem they want AI to solve or how they currently do the task. It should not contain a `SKILL.md` draft.
+
 Better questions:
 
 - "你现在想解决什么问题，或者想让 AI 帮你做什么？"
@@ -37,7 +41,7 @@ Replace them with concrete scenario prompts:
 
 Adapted from the `brainstorming` skill pattern: not every request needs the same amount of ceremony. Choose the smallest path that will produce a useful skill.
 
-- Quick Draft: use when the user already gave enough detail. Organize what they said into a Skill Brief and ask for correction.
+- Quick Draft: use only when the user already gave the goal, starting materials, manual workflow, output, confirmation points, quality bar, and likely failure modes. Organize what they said into a Skill Brief and ask for correction.
 - Guided Build: use when the user knows the goal but not the skill shape. Interview their manual workflow one question at a time.
 - Deep Design: use when the skill affects external accounts, publishing, automation, irreversible actions, or several viable workflows. Understand goals and constraints, then offer 2-3 approaches with a recommended option.
 
@@ -57,6 +61,10 @@ Show a short Skill Brief that includes:
 - What mistakes it must avoid.
 
 Ask whether the brief matches the user's real workflow. If the user corrects it, revise the brief before drafting the skill.
+
+If the brief contains guessed workflow steps, guessed user-confirmation points, or guessed failure modes, keep interviewing instead of drafting.
+
+The brief is ready only when these are real answers from the conversation: goal, starting materials, manual process, automation boundary, final output, quality bar, likely failure modes, and one realistic request. If two or more are missing, ask the next discovery question.
 
 ## Use Options For Real Choices
 
