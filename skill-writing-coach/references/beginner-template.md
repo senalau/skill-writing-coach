@@ -62,6 +62,24 @@ Ask these when the beginner is stuck:
 6. "AI 做这件事时最容易哪里跑偏？"
 7. "有没有一次你觉得它做对了？那次输入和输出大概是什么样？"
 
+## First-Turn Examples
+
+Use these to keep the opening concrete:
+
+User says: "帮我做一个 skill"
+
+Ask: "你现在想解决什么问题，或者想让 AI 帮你做什么？"
+
+User says: "我想要一个可以自动发公众号的 skill"
+
+Ask: "你现在不用 AI 的时候，是怎么从写文章到发公众号一步步做的？"
+
+User says: "帮我做一个销售邮件 skill"
+
+Ask: "你现在写销售邮件时，会先看哪些材料，然后怎么判断一封邮件写得好？"
+
+In these cases, do not draft the main skill file yet. Keep interviewing until the Skill Brief has the user's real workflow, boundaries, and quality bar.
+
 ## Skill Brief Template
 
 Use this before drafting the main skill file, usually `SKILL.md`, for any non-trivial beginner skill:
