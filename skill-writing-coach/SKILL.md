@@ -11,12 +11,12 @@ Use Chinese by default when the user writes in Chinese.
 
 ## Core Idea
 
-A good skill starts from the user's current problem and lived workflow, not from file structure or skill jargon. First ask what problem the user wants to solve, then interview for the goal, current manual process, inputs, expected result, judgment standards, and risky steps. Translate those answers into the skill's trigger, workflow, pitfalls, and examples yourself.
+A good skill starts from the user's current problem and lived workflow, not from file structure or skill jargon. First ask what problem the user wants to solve, then interview for the goal, current manual process, inputs, expected result, judgment standards, and risky steps. Invite the user to share any materials they think are relevant when the skill depends on their files, examples, accounts, screenshots, links, or preferences; the coach should inspect what they provide and decide which parts are useful. When public examples, current facts, platform rules, or outside references would materially shape the skill, gather that information yourself through the tools available in the environment and fold it into the brief. Translate the answers and evidence into the skill's trigger, workflow, pitfalls, and examples yourself.
 
 Use this internal frame while interviewing. Do not show these labels to a beginner unless it helps:
 
 1. Goal: what outcome is the user trying to get?
-2. Materials: what inputs, accounts, files, links, or context are involved?
+2. Materials: what inputs, accounts, files, links, examples, or context should the user provide, and what outside information should the agent gather?
 3. Current flow: how does the user do it manually today?
 4. Automation boundary: which parts should AI do, and which parts need user confirmation?
 5. Quality bar: what makes the result good enough?
@@ -24,17 +24,19 @@ Use this internal frame while interviewing. Do not show these labels to a beginn
 7. Trigger: when should this skill be used?
 8. Example: what does good input and output look like?
 
-Treat the first user request as a starting point, not permission to draft. A request like "help me make a skill", "make a skill for X", or "I want a skill that does X" is not enough to write the final skill. The coach must first discover the user's real workflow unless the user has already supplied the workflow, inputs, boundaries, quality bar, and failure modes.
+Treat the first user request as a starting point for discovery, not as a reason to guess the final skill. A request like "help me make a skill", "make a skill for X", or "I want a skill that does X" should lead to one useful question unless the user has already given enough context to summarize.
 
-Default to discovery mode. Produce a final skill only after the brief is ready, or after the user explicitly says to skip discovery and accept assumptions. During discovery, each response should end with exactly one next question and should not include a partial `SKILL.md`.
+Readiness checkpoint: ask one question at a time until either the coach can make a useful Skill Brief or the user says the information is enough. Do not jump straight to a final `SKILL.md`. When ready, show a plain Skill Brief in beginner language and ask whether to proceed or adjust it. The ceremony scales down for simple cases; the user can always say "可以了" and move the process forward.
 
-Before interviewing, choose the lightest coaching path that fits the request:
+During discovery, each response should end with exactly one next question and should not include a partial `SKILL.md`.
 
-- Quick Draft: the user already gave the goal, starting materials, manual workflow, output, user-confirmation points, quality bar, and likely failure modes. Draft the Skill Brief first; draft the skill only after the brief is confirmed or the user explicitly asks to skip confirmation.
+Before interviewing, choose the lightest coaching path that fits the request and say it in simple language so the user can redirect:
+
+- Brief Check: the user already gave enough detail to make a coherent draft, or says the information is enough. Organize it into a plain Skill Brief and ask whether to proceed. Do not draft the final skill until the user says the brief is enough.
 - Guided Build: the user has a real goal but the workflow, inputs, boundaries, quality bar, or failure modes are unclear. Ask one concrete question at a time until the Skill Brief is usable.
 - Deep Design: the skill touches multiple platforms, irreversible actions, external accounts, or several possible workflows. First understand purpose, constraints, and success criteria, then offer 2-3 approaches with a recommended option before drafting.
 
-Say the path in simple language, not as ceremony: "这个已经比较清楚了，我先整理成一个 brief 给你确认" or "这里还缺你的真实流程，我一次问一个问题". If new complexity appears mid-conversation, step up to a deeper path and tell the user why.
+Say the path in simple language, not as ceremony: "这个已经比较清楚了，我先整理成一个 brief 给你确认" or "这里还缺你的真实流程，我一次问一个问题". If new complexity appears mid-conversation, step up to a deeper path and tell the user why. Do not downgrade mid-conversation after choosing a deeper path.
 
 ## Coaching Style
 
@@ -57,33 +59,41 @@ If the user's goal is underspecified, interview one question at a time. A bare r
 
 After each answer, briefly restate what you learned in simple language, then ask the next concrete question. Before asking for a detail, explain what it will help you decide. Keep questions grounded in the user's real process: ask "how do you do it today?" or "what happens next?" rather than "what is the trigger?" or "how would you call this ability?"
 
+When materials are needed, invite the user to send whatever relevant materials they have: "你可以把相关链接、截图、文档、好例子都发来，我会帮你判断哪些能用". If a specific missing item would unlock the next step, ask for it in concrete terms: "发我一个你想模仿的链接", "给我一篇做得好的例子", or "把你现在的表格/文档发来".
+
+When outside research is needed, do it before the Skill Brief and keep it scoped to what affects the skill design. Tell the user briefly what you looked up and how it changes the brief.
+
 Do not ask for trigger phrases early. Infer likely trigger branches later from the user's problem, examples, and wording. Only ask for wording if the description cannot be written confidently without it.
 
-When enough information is already present, skip questions and draft a brief directly. Enough means the coach has real answers, not guesses, for goal, starting materials, manual process, automation boundary, final output, quality bar, likely failure modes, and one realistic request.
+When the user seems to have given enough information, or says the information is enough, skip extra questions and draft a brief directly. The brief is a lightweight checkpoint, not an audit.
 
-Readiness gate: if two or more of manual process, automation boundary, quality bar, failure modes, or example request are missing, keep interviewing. If only one is missing and the user is impatient, state the assumption plainly in the brief and ask them to confirm it before drafting the final skill.
+Readiness gate: if the core flow is unclear and the user has not said to proceed, ask the next concrete question. If the core flow is mostly clear, or the user says to proceed, create a Skill Brief and ask whether to write the skill from it.
 
 If the user needs a fill-in structure or says they do not know how to start, use `references/beginner-template.md`.
 
-Show the Skill Brief before writing the final skill file unless the user explicitly asks for a rough one-shot draft. Ask whether the brief matches their real workflow. If they correct it, update the brief first, then draft.
+Show the Skill Brief before writing the final skill file. The Skill Brief is for the human to confirm in everyday language; the final skill is the agent-facing instruction document translated from that brief. Ask whether the brief is enough to write from, or whether they want to correct one part first. If they correct it, update the brief first, then ask for confirmation again.
 
 Use this brief shape, with plain labels when talking to the user:
 
 ```markdown
-Skill Brief
-- Goal:
-- Starting materials:
-- Manual process:
-- AI should handle:
-- AI should ask before:
-- Final output:
-- Quality bar:
-- Common failure modes:
-- Likely trigger:
-- Example request:
+我先把你的需求整理一下，你看这样理解对不对：
+
+- 你想让 AI 帮你做：
+- 你通常会给 AI 什么材料：
+- AI 需要自己查哪些资料：
+- 你现在自己是怎么做这件事的：
+- 你希望 AI 自动完成哪些部分：
+- 哪些地方需要先问你确认：
+- 最后你想拿到什么结果：
+- 什么样算做得好：
+- 最怕 AI 做错什么：
+- 这个 skill 以后适合在什么时候用：
+- 一个典型请求：
+
+如果这个理解没问题，我下一步就把它写成 agent 能使用的 skill。
 ```
 
-Completion criterion: produce a confirmed "Skill Brief" with goal, materials, current flow, automation boundary, output, quality bar, pitfalls, inferred trigger, and one example candidate. Do not proceed to the final skill file while any of current flow, automation boundary, quality bar, or pitfalls are blank or guessed.
+Completion criterion: produce a user-approved "Skill Brief" with goal, materials, current flow, automation boundary, output, quality bar, pitfalls, inferred trigger, and one example candidate. If something important is still unclear, ask one more concrete question unless the user has said the brief is enough.
 
 ### 2. Choose Platform Fit
 
@@ -95,7 +105,7 @@ Decide how the target platform should invoke or expose the skill:
 
 If unsure, prefer automatic discovery for beginner skills that solve a common repeated task.
 
-Completion criterion: state the invocation or exposure choice, target platform if known, and the reason in one sentence.
+Completion criterion: state the invocation or exposure choice, target platform if known, and the reason in one sentence, then continue only if it does not bypass the approved brief.
 
 ### 3. Write The Description First
 
@@ -200,6 +210,8 @@ When creating a new skill, provide:
 2. Complete main skill file, usually `SKILL.md`.
 3. Any `references/` files that are needed.
 4. A short review note using the quality checklist.
+
+Only provide these after the user has approved the Skill Brief in the current conversation.
 
 When editing an existing skill, provide:
 
