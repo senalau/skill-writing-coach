@@ -10,16 +10,21 @@ A user asking "帮我做一个 skill" or "make a skill for X" is not a complete 
 
 First-turn test: if the user says only "帮我做一个 skill" or "做一个能自动发公众号的 skill", the next response should ask what problem they want AI to solve or how they currently do the task. It should not contain a `SKILL.md` draft.
 
+When the user says "直接写", "不用问", or gives a detailed first message, show a plain Skill Brief first and let the user decide whether to proceed. Keep the brief readable; do not turn it into an audit table.
+
 Better questions:
 
 - "你现在想解决什么问题，或者想让 AI 帮你做什么？"
 - "你现在不用 AI 的时候，是怎么一步步做这件事的？"
 - "你一般会从什么材料开始？"
+- "你可以把相关链接、截图、文档、好例子都发来，我会帮你判断哪些能用。"
 - "哪些步骤希望 AI 自动做？哪些必须先问你确认？"
 - "最后做好的结果应该长什么样？"
 - "AI 做这件事时最容易哪里跑偏？"
 
 Infer trigger branches later from the user's answers. Ask for exact wording only when the description cannot be written confidently without it.
+
+Ask the user for private, personal, or preference-heavy materials, and let them send all relevant materials if they are not sure what matters. Inspect the materials and decide which ones shape the skill. Gather public examples, current platform rules, and outside references yourself when they would materially affect the skill design.
 
 ## Ask One Concrete Question At A Time
 
@@ -41,7 +46,7 @@ Replace them with concrete scenario prompts:
 
 Adapted from the `brainstorming` skill pattern: not every request needs the same amount of ceremony. Choose the smallest path that will produce a useful skill.
 
-- Quick Draft: use only when the user already gave the goal, starting materials, manual workflow, output, confirmation points, quality bar, and likely failure modes. Organize what they said into a Skill Brief and ask for correction.
+- Brief Check: use when the user already gave enough detail to make a coherent draft, or says the information is enough. Organize what they said into a plain Skill Brief and ask whether to proceed. Do not draft the final skill until the user says the brief is enough.
 - Guided Build: use when the user knows the goal but not the skill shape. Interview their manual workflow one question at a time.
 - Deep Design: use when the skill affects external accounts, publishing, automation, irreversible actions, or several viable workflows. Understand goals and constraints, then offer 2-3 approaches with a recommended option.
 
@@ -64,7 +69,9 @@ Ask whether the brief matches the user's real workflow. If the user corrects it,
 
 If the brief contains guessed workflow steps, guessed user-confirmation points, or guessed failure modes, keep interviewing instead of drafting.
 
-The brief is ready only when these are real answers from the conversation: goal, starting materials, manual process, automation boundary, final output, quality bar, likely failure modes, and one realistic request. If two or more are missing, ask the next discovery question.
+Ask one question at a time until the coach can summarize a useful brief or the user says the information is enough. The brief is how the user checks whether the agent understood. If the core flow is too unclear to summarize and the user has not said to proceed, ask the next discovery question. If it can be summarized, show the brief and let the user decide whether to proceed or correct it.
+
+Write the final skill after the user approves the Skill Brief or says it is good enough. If the user corrects the brief, revise the brief and ask again.
 
 ## Use Options For Real Choices
 
