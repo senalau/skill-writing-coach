@@ -1,6 +1,6 @@
 ---
 name: skill-writing-coach
-description: Guide beginners to design and write reusable AI agent skills through interactive questions, drafting, review, and iteration. Use when the user wants to create, improve, or learn how to write a skill, especially when they are unsure about triggers, workflow, pitfalls, examples, metadata, or references.
+description: Guide beginners through workflow discovery before drafting reusable AI agent skills. Use when the user wants to create, improve, or learn how to write a skill, especially when they are unsure about the goal, process, boundaries, quality bar, pitfalls, examples, metadata, or references.
 ---
 
 # Skill Writing Coach
@@ -24,10 +24,14 @@ Use this internal frame while interviewing. Do not show these labels to a beginn
 7. Trigger: when should this skill be used?
 8. Example: what does good input and output look like?
 
+Treat the first user request as a starting point, not permission to draft. A request like "help me make a skill", "make a skill for X", or "I want a skill that does X" is not enough to write the final skill. The coach must first discover the user's real workflow unless the user has already supplied the workflow, inputs, boundaries, quality bar, and failure modes.
+
+Default to discovery mode. Produce a final skill only after the brief is ready, or after the user explicitly says to skip discovery and accept assumptions. During discovery, each response should end with exactly one next question and should not include a partial `SKILL.md`.
+
 Before interviewing, choose the lightest coaching path that fits the request:
 
-- Quick Draft: the user already gave the goal, inputs, output, constraints, and pitfalls. Draft the Skill Brief or skill directly, then ask for correction.
-- Guided Build: the user has a real goal but the workflow is unclear. Ask one concrete question at a time until the Skill Brief is usable.
+- Quick Draft: the user already gave the goal, starting materials, manual workflow, output, user-confirmation points, quality bar, and likely failure modes. Draft the Skill Brief first; draft the skill only after the brief is confirmed or the user explicitly asks to skip confirmation.
+- Guided Build: the user has a real goal but the workflow, inputs, boundaries, quality bar, or failure modes are unclear. Ask one concrete question at a time until the Skill Brief is usable.
 - Deep Design: the skill touches multiple platforms, irreversible actions, external accounts, or several possible workflows. First understand purpose, constraints, and success criteria, then offer 2-3 approaches with a recommended option before drafting.
 
 Say the path in simple language, not as ceremony: "这个已经比较清楚了，我先整理成一个 brief 给你确认" or "这里还缺你的真实流程，我一次问一个问题". If new complexity appears mid-conversation, step up to a deeper path and tell the user why.
@@ -42,7 +46,7 @@ If the user says "继续", continue from the next missing piece instead of resta
 
 ### 1. Start With The Brief
 
-If the user's goal is underspecified, interview one question at a time. Start with the plainest possible question:
+If the user's goal is underspecified, interview one question at a time. A bare request such as "帮我做一个 skill", "做一个能自动发公众号的 skill", or "make a skill for sales emails" should receive one discovery question, not a draft. Start with the plainest possible question:
 
 1. What problem do you want to solve, or what do you want AI to help you do right now?
 2. How do you do this manually today, from start to finish?
@@ -55,11 +59,13 @@ After each answer, briefly restate what you learned in simple language, then ask
 
 Do not ask for trigger phrases early. Infer likely trigger branches later from the user's problem, examples, and wording. Only ask for wording if the description cannot be written confidently without it.
 
-When enough information is already present, skip questions and draft a brief directly.
+When enough information is already present, skip questions and draft a brief directly. Enough means the coach has real answers, not guesses, for goal, starting materials, manual process, automation boundary, final output, quality bar, likely failure modes, and one realistic request.
+
+Readiness gate: if two or more of manual process, automation boundary, quality bar, failure modes, or example request are missing, keep interviewing. If only one is missing and the user is impatient, state the assumption plainly in the brief and ask them to confirm it before drafting the final skill.
 
 If the user needs a fill-in structure or says they do not know how to start, use `references/beginner-template.md`.
 
-For non-trivial skills, show the Skill Brief before writing the final skill file. Ask the user whether the brief matches their real workflow. If they correct it, update the brief first, then draft.
+Show the Skill Brief before writing the final skill file unless the user explicitly asks for a rough one-shot draft. Ask whether the brief matches their real workflow. If they correct it, update the brief first, then draft.
 
 Use this brief shape, with plain labels when talking to the user:
 
@@ -77,7 +83,7 @@ Skill Brief
 - Example request:
 ```
 
-Completion criterion: produce a confirmed "Skill Brief" with goal, materials, current flow, automation boundary, output, quality bar, pitfalls, inferred trigger, and one example candidate.
+Completion criterion: produce a confirmed "Skill Brief" with goal, materials, current flow, automation boundary, output, quality bar, pitfalls, inferred trigger, and one example candidate. Do not proceed to the final skill file while any of current flow, automation boundary, quality bar, or pitfalls are blank or guessed.
 
 ### 2. Choose Platform Fit
 
